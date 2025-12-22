@@ -15,6 +15,5 @@ public class HelloController {
     public Button button[]=new Button[numCols*numRows];
 
     public void onButtonClicked(ActionEvent actionEvent) {
-
     }
 }
