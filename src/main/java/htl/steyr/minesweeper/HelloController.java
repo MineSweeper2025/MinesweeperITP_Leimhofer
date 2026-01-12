@@ -50,56 +50,56 @@ public class HelloController {
     private void checkFields(int row, int col) {
         int numMinesNearby=0;
         if(row==0&&col==0){
-            numMinesNearby=checkField(row,col+1);
-            numMinesNearby=checkField(row+1,col);
-            numMinesNearby=checkField(row+1,col+1);
+            numMinesNearby+=checkField(row,col+1);
+            numMinesNearby+=checkField(row+1,col);
+            numMinesNearby+=checkField(row+1,col+1);
         } else if (row==gameField.getRowCount()-1&&col==gameField.getColumnCount()-1) {
-            numMinesNearby=checkField(row-1,col-1);
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row,col-1);
+            numMinesNearby+=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row,col-1);
         }else if(row==gameField.getRowCount()-1&&col==0) {
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row, col+1);
-            numMinesNearby=checkField(row-1,col+1);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row, col+1);
+            numMinesNearby+=checkField(row-1,col+1);
         }else if (row==0 && col==gameField.getColumnCount()-1) {
-            numMinesNearby=checkField(row-1,col-1);
-            numMinesNearby=checkField(row-1,col-1);
-            numMinesNearby=checkField(row+1,col);
+            numMinesNearby+=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row+1,col);
         }else if(row==0){
-            numMinesNearby=checkField(row,col+1);
-            numMinesNearby=checkField(row+1,col+1);
-            numMinesNearby=checkField(row+1,col);
-            numMinesNearby=checkField(row+1,col-1);
-            numMinesNearby=checkField(row, col-1);
+            numMinesNearby+=checkField(row,col+1);
+            numMinesNearby+=checkField(row+1,col+1);
+            numMinesNearby+=checkField(row+1,col);
+            numMinesNearby+=checkField(row+1,col-1);
+            numMinesNearby+=checkField(row, col-1);
         } else if (col==0) {
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row-1,col+1);
-            numMinesNearby=checkField(row,col+1);
-            numMinesNearby=checkField(row+1,col);
-            numMinesNearby=checkField(row+1,col+1);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row-1,col+1);
+            numMinesNearby+=checkField(row,col+1);
+            numMinesNearby+=checkField(row+1,col);
+            numMinesNearby+=checkField(row+1,col+1);
         }else if(row==gameField.getRowCount()-1){
-            numMinesNearby=checkField(row,col+1);
-            numMinesNearby=checkField(row,col-1);
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row-1,col+1);
-            numMinesNearby=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row,col+1);
+            numMinesNearby+=checkField(row,col-1);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row-1,col+1);
+            numMinesNearby+=checkField(row-1,col-1);
         }
         else if (col==gameField.getColumnCount()-1) {
-            numMinesNearby=checkField(row+1,col);
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row-1,col-1);
-            numMinesNearby=checkField(row,col-1);
-            numMinesNearby=checkField(row+1,col-1);
+            numMinesNearby+=checkField(row+1,col);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row,col-1);
+            numMinesNearby+=checkField(row+1,col-1);
         }
         else {
-            numMinesNearby=checkField(row+1,col);
-            numMinesNearby=checkField(row-1,col);
-            numMinesNearby=checkField(row-1,col-1);
-            numMinesNearby=checkField(row,col-1);
-            numMinesNearby=checkField(row+1,col-1);
-            numMinesNearby=checkField(row+1,col-1);
-            numMinesNearby=checkField(row+1,col+1);
-            numMinesNearby=checkField(row+1,col);
+            numMinesNearby+=checkField(row+1,col);
+            numMinesNearby+=checkField(row-1,col);
+            numMinesNearby+=checkField(row-1,col-1);
+            numMinesNearby+=checkField(row,col-1);
+            numMinesNearby+=checkField(row+1,col-1);
+            numMinesNearby+=checkField(row+1,col-1);
+            numMinesNearby+=checkField(row+1,col+1);
+            numMinesNearby+=checkField(row+1,col);
         }
         if (numMinesNearby==0){
             revealNearby(row,col);
