@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.minesweeper.HelloController" fx:id="buttonPane">
+<AnchorPane fx:id="buttonPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="htl.steyr.minesweeper.HelloController">
    <children>
-      <Button fx:id="fieldButton" layoutX="171.0" layoutY="141.0" mnemonicParsing="false" onAction="#onButtonClicked" prefHeight="25.0" prefWidth="43.0" />
+      <Button fx:id="fieldButton" layoutX="171.0" layoutY="141.0" mnemonicParsing="false" onAction="#onButtonClicked" onMouseClicked="#onRightMouseClicked" prefHeight="25.0" prefWidth="43.0" />
       <Label fx:id="bombLabel" layoutX="183.0" layoutY="85.0" text="Bomb" />
-      <Label fx:id="numBombs" layoutX="179.0" layoutY="145.0" text="Label" />
+      <Label fx:id="numBombs" layoutX="179.0" layoutY="145.0" text="Label" visible="false" />
    </children>
 </AnchorPane>

@@ -4,9 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+import javax.swing.*;
 import java.sql.Array;
 import java.util.Random;
 
@@ -16,6 +18,8 @@ public class HelloController {
     public Label numBombs;
     public Label bombLabel;
     public AnchorPane buttonPane;
+    private int numFlags;
+    private boolean flag;
     int numRows= gameField.getRowCount();
     int numCols= gameField.getColumnCount();
     public void load(){
@@ -44,6 +48,7 @@ public class HelloController {
     }
 
     public void onButtonClicked(ActionEvent actionEvent) {
+
         reveal(GridPane.getRowIndex(gameField),GridPane.getColumnIndex(gameField));
     }
 
@@ -181,5 +186,40 @@ public class HelloController {
         }else {
             checkFields(GridPane.getRowIndex(gameField), GridPane.getColumnIndex(gameField));
         }
+    }
+    public void placeFlag(int row, int collum){
+        fieldButton.setText("Flag");
+    }
+    public void removeFlag(int row, int col){
+        fieldButton.setText("");
+    }
+    public int getNumFlags() {
+        return numFlags;
+    }
+
+    public void setNumFlags(int numFlags) {
+        this.numFlags = numFlags;
+    }
+
+    public void onRightMouseClicked(MouseEvent mouseEvent) {
+        if(mouseEvent.isSecondaryButtonDown()){
+            if (isFlag()){
+                removeFlag(GridPane.getRowIndex(gameField), GridPane.getColumnIndex(gameField));
+                setFlag(false);
+                setNumFlags(numFlags+1);
+            }else {
+                placeFlag(GridPane.getRowIndex(gameField), GridPane.getColumnIndex(gameField));
+                setNumFlags(getNumFlags() - 1);
+                setFlag(true);
+            }
+        }
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }
