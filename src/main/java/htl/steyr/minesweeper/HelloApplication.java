@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         HelloController controller=fxmlLoader.getController();
-        controller.load();
+        controller.load(8, 8, 10);
         stage.show();
     }
 }

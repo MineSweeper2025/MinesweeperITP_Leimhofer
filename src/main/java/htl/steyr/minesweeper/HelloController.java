@@ -6,7 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 import javax.swing.*;
 import java.sql.Array;
@@ -20,11 +22,18 @@ public class HelloController {
     public AnchorPane buttonPane;
     private int numFlags;
     private boolean flag;
-    int numRows= gameField.getRowCount();
-    int numCols= gameField.getColumnCount();
-    public void load(){
-        int numMines=10;
-        int numFields=64;
+    public void load(int numRows, int numCols, int numMines){
+        int numFields=numCols*numRows;
+        ColumnConstraints c1 = new ColumnConstraints();
+        c1.setPercentWidth(1.0/numCols);
+        RowConstraints r1 = new RowConstraints();
+        r1.setPercentHeight(1.0/numRows);
+        for (int i = 0; i < numCols; i++) {
+            gameField.getColumnConstraints().add(c1);
+        }
+        for (int i = 0; i < numRows; i++) {
+            gameField.getRowConstraints().add(r1);
+        }
         Random rand=new Random();
         for(int i=0;i<numRows;i++){
             for(int j=0;j<numCols;j++){
